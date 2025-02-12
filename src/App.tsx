@@ -1,21 +1,22 @@
-import './App.scss';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid2';
+import DetailAccordion from './components/Detail';
+import AttributeAccordion from './components/Attribute';
 
-function App() {
+export default function App() {
   return (
-    <>
-    <div className="dashboard-container">
-      <div className="selection-container">
-        <h2>Details</h2>
-      </div>
-      <div className="editor-container">
-        <h2>Create new Wireframe</h2>
-      </div>
-      <div className="attributes-container">
-        <h2>Attribute columns</h2>
-      </div>
-    </div>
-    </>
-  )
+    <Container maxWidth="lg">
+      <Grid container spacing={2}>
+        <Grid size={4}>
+          <DetailAccordion />
+        </Grid>
+        <Grid size={4}>
+          
+        </Grid>
+        <Grid size={4}>
+          <AttributeAccordion />
+        </Grid>
+      </Grid>
+    </Container>
+  );
 }
-
-export default App
