@@ -12,6 +12,13 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Accordion from "../Accordion/Accordion";
 
 export default function DetailAccordion() {
+  const resolutions = [
+    { id: 'low', label: "Low (800x600)", value: { width: 800, height: 600 } },
+    { id: 'standard', label: "Standard (1280x720)", value: { width: 1280, height: 720 }, default: true },
+    { id: 'hd', label: "HD (1920x1080)", value: { width: 1920, height: 1080 } },
+    { id: '2k', label: "2K (2560x1440)", value: { width: 2560, height: 1440 } },
+    { id: '4k', label: "4K (3840x2160)", value: { width: 3840, height: 2160 } },
+  ];
   return (
     <>
       <Accordion title="Detail">
@@ -50,10 +57,13 @@ export default function DetailAccordion() {
             id="demo-simple-select"
             label="Resolution"
             size="small"
+            defaultValue={'standard'}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {
+              resolutions.map(resolution => 
+                <MenuItem value={resolution.id}>{resolution.label}</MenuItem>
+              )
+            }
           </Select>
         </FormControl>
         <FormControl variant="outlined">

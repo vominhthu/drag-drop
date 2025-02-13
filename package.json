@@ -13,8 +13,11 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "fabric": "^6.5.4",
+    "konva": "^9.3.18",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-konva": "^19.0.2"
   },
   "devDependencies": {
     "@types/react": "latest",
