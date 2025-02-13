@@ -5,15 +5,15 @@ import AttributeAccordion from './components/Attribute';
 
 export default function App() {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <Grid container spacing={2}>
-        <Grid size={4}>
+        <Grid size={3}>
           <DetailAccordion />
         </Grid>
-        <Grid size={4}>
+        <Grid size={6}>
           
         </Grid>
-        <Grid size={4}>
+        <Grid size={3}>
           <AttributeAccordion />
         </Grid>
       </Grid>
