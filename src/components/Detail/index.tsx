@@ -19,6 +19,7 @@ export default function DetailAccordion() {
     { id: '2k', label: "2K (2560x1440)", value: { width: 2560, height: 1440 } },
     { id: '4k', label: "4K (3840x2160)", value: { width: 3840, height: 2160 } },
   ];
+  const defaultGridSize = 32;
   return (
     <>
       <Accordion title="Detail">
@@ -61,7 +62,7 @@ export default function DetailAccordion() {
           >
             {
               resolutions.map(resolution => 
-                <MenuItem value={resolution.id}>{resolution.label}</MenuItem>
+                <MenuItem key={resolution.id} value={resolution.id}>{resolution.label}</MenuItem>
               )
             }
           </Select>
@@ -73,6 +74,7 @@ export default function DetailAccordion() {
           <OutlinedInput
             id="outlined-adornment-weight"
             endAdornment={<InputAdornment position="end">px</InputAdornment>}
+            value={defaultGridSize}
             label="Grid"
             size="small"
           />

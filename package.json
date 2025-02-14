@@ -11,7 +11,7 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
-    "@mui/icons-material": "latest",
+    "@mui/icons-material": "^6.4.4",
     "@mui/material": "latest",
     "fabric": "^6.5.4",
     "konva": "^9.3.18",

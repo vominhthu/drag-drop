@@ -13,7 +13,7 @@ export default function CanvasEditor() {
         selectedLib === FABRIC
         ? <FabricCanvas />
         : <KonvaCanvas />
-      }
+      } 
     </>
   )
 }
