@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useFabricCanvas } from "../../hooks";
 import * as fabric from "fabric";
 import Grid from "@mui/material/Grid2";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import PanToolAltIcon from "@mui/icons-material/PanToolAlt";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
@@ -17,22 +17,8 @@ type ActionButtonTool = {
   callback?: Function
 }
 
-
 const FabricCanvas: React.FC = () => {
   const { canvas, canvasRef } = useFabricCanvas();
-  
-  canvas?.on("selection:created", (e) => {
-    setSelectedObject(e.selected ? e.selected[0] : null);
-  });
-  canvas?.on("mouse:up", () => {
-    const obj = canvas.getActiveObject();
-    if (obj) {
-      console.log("Drag End at:", obj.left, obj.top);
-    }
-  });
-
-  const [selectedObject, setSelectedObject] = useState<fabric.Object | null>(null);
-
   const addRectangle = () => {
     const rect = new fabric.Rect({
       left: 100,
@@ -103,9 +89,22 @@ const FabricCanvas: React.FC = () => {
     if (action.callback) {
       action.callback();
     }
-    
   }
 
+  const handleSave = () => {
+    if (!canvas) return;
+    const jsonData = canvas.toJSON();
+    const blob = new Blob([JSON.stringify(jsonData, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "canvas.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
   return (
     <>
       <Grid container sx={{ height: '100%' }}>
@@ -123,9 +122,7 @@ const FabricCanvas: React.FC = () => {
             ))
           }
         </Grid>
-        <Grid size={12}>
-          { JSON.stringify(selectedObject) }
-        </Grid>
+        <Button onClick={handleSave} variant="contained">Save</Button>
       </Grid>
     </>
   );

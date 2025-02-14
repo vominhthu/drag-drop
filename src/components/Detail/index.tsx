@@ -20,6 +20,8 @@ export default function DetailAccordion() {
     { id: '4k', label: "4K (3840x2160)", value: { width: 3840, height: 2160 } },
   ];
   const defaultGridSize = 32;
+  
+    
   return (
     <>
       <Accordion title="Detail">

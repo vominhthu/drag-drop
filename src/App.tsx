@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid2';
 import DetailAccordion from './components/Detail';
 import AttributeAccordion from './components/Attribute';
 import CanvasProvider from './components/Canvas';
+import FabricCanvasPreview from './components/Canvas/Preview';
 
 export default function App() {
   return (
@@ -16,6 +17,9 @@ export default function App() {
         </Grid>
         <Grid size={3}>
           <AttributeAccordion />
+        </Grid>
+        <Grid size={12}>
+          <FabricCanvasPreview />
         </Grid>
       </Grid>
     </Container>

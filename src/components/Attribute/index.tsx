@@ -1,9 +1,11 @@
-import { FormGroup, InputLabel } from "@mui/material";
+import { Button, FormGroup, InputLabel } from "@mui/material";
 import Accordion from "../Accordion/Accordion";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { TextField, Typography, Grid2 as Grid, Box } from "@mui/material";
 import Autocomplete from '@mui/material/Autocomplete';
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const componentTypes = [
   {
@@ -17,6 +19,8 @@ const componentTypes = [
 ];
 
 export default function AttributeAccordion() {
+  const selectedObject: any = useSelector((state: RootState) => state.canvas.selectedObject || {})
+  const { left: positionX = '', top: positionY = '', width = '', height = '', scaleX = '', scaleY = '' } = selectedObject
   return (
     <>
       <div className="attributes-container" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -31,6 +35,7 @@ export default function AttributeAccordion() {
                   name="positionX"
                   variant="outlined"
                   size="small"
+                  value={positionX}
                 />
               </FormGroup>
             </Grid>
@@ -41,6 +46,7 @@ export default function AttributeAccordion() {
                   name="positionY"
                   variant="outlined"
                   size="small"
+                  value={positionY}
                 />
               </FormGroup>
             </Grid>
@@ -55,6 +61,7 @@ export default function AttributeAccordion() {
                   name="sizeWidth"
                   variant="outlined"
                   size="small"
+                  value={width * scaleX}
                 />
               </FormGroup>
             </Grid>
@@ -65,6 +72,7 @@ export default function AttributeAccordion() {
                   name="sizeHeight"
                   variant="outlined"
                   size="small"
+                  value={height * scaleY}
                 />
               </FormGroup>
             </Grid>
