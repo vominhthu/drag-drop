@@ -9,12 +9,10 @@ const FabricCanvasLoader: React.FC = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  // Khởi tạo Fabric Canvas
   useEffect(() => {
     if (!canvasEl.current) return;
 
     canvasRef.current = new fabric.Canvas(canvasEl.current, {
-      backgroundColor: "#f5f5f5",
       width: 584,
       height: 320,
     });
@@ -24,7 +22,6 @@ const FabricCanvasLoader: React.FC = () => {
     };
   }, []);
 
-  // Load JSON vào canvas
   const loadCanvasFromJSON = () => {
     if (!canvasRef.current) return;
 
@@ -33,13 +30,13 @@ const FabricCanvasLoader: React.FC = () => {
       setSuccessMessage("");
       const jsonData = JSON.parse(jsonText);
 
-      canvasRef.current.clear(); // Xóa canvas hiện tại
+      canvasRef.current.clear();
       canvasRef.current.loadFromJSON(jsonData, () => {
         canvasRef.current?.renderAll();
-        setSuccessMessage("✅ Load Canvas thành công!");
+        setSuccessMessage("Load Canvas successfully");
       });
     } catch (err) {
-      setError("❌ JSON không hợp lệ! Vui lòng kiểm tra lại.");
+      setError("Invalid JSON!!!");
     }
   };
 
